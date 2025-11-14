@@ -1,4 +1,4 @@
-# SnowUI React Demo
+# SnowUI Example
 
 This is a demonstration page for the SnowUI Design System, showcasing all available assets including icons, avatars, backgrounds, images, logos, and emoji.
 
