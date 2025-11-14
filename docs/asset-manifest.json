@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/example/static/css/main.d49294fc.css",
-    "main.js": "/example/static/js/main.f6e5c3e3.js",
+    "main.js": "/example/static/js/main.12c63a9e.js",
     "static/media/smiling-face-hearts.svg": "/example/static/media/smiling-face-hearts.7cbe3b04c19a6b373a181fd7550e9460.svg",
     "static/media/grinning-face-sweat.svg": "/example/static/media/grinning-face-sweat.d36c130009647c98723a335259e442df.svg",
     "static/media/face-tears-joy.svg": "/example/static/media/face-tears-joy.2f28fae8dc19505fb0ff7914c253847a.svg",
@@ -179,10 +179,10 @@
     "static/media/microsoft.svg": "/example/static/media/microsoft.417961fec83270c07354747137a00fc3.svg",
     "static/media/xlogo.svg": "/example/static/media/xlogo.8321dec92a6124814025efcb6290e1c7.svg",
     "main.d49294fc.css.map": "/example/static/css/main.d49294fc.css.map",
-    "main.f6e5c3e3.js.map": "/example/static/js/main.f6e5c3e3.js.map"
+    "main.12c63a9e.js.map": "/example/static/js/main.12c63a9e.js.map"
   },
   "entrypoints": [
     "static/css/main.d49294fc.css",
-    "static/js/main.f6e5c3e3.js"
+    "static/js/main.12c63a9e.js"
   ]
 }
