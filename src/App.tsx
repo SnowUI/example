@@ -32,16 +32,16 @@ function App() {
   return (
     <ThemeProvider>
       <Router basename={basename}>
-        {/* 页面根容器：垂直布局，最小高度为屏幕高度 */}
-        <div className="flex flex-col min-h-screen bg-[var(--background-1)]">
+        {/* 页面根容器：垂直布局，固定高度为屏幕高度，防止整体页面滚动 */}
+        <div className="flex flex-col h-screen bg-[var(--background-1)] overflow-hidden">
           {/* ========== 顶部栏区块 ========== */}
           {/* 位置：页面最顶部，固定定位 */}
           {/* 包含：Logo、网站标题、主题切换、语言切换 */}
           <TopBar />
           
           {/* ========== 主体内容区域 ========== */}
-          {/* 布局：水平布局，左侧为侧边栏，右侧为主内容区 */}
-          <div className="flex flex-1 overflow-hidden">
+          {/* 布局：水平布局，左侧为侧边栏，右侧为主内容区，占据剩余高度 */}
+          <div className="flex flex-1 overflow-hidden min-h-0">
             {/* ========== 左侧边栏区块 ========== */}
             {/* 位置：页面左侧，固定宽度，不随页面滚动 */}
             {/* 包含：导航菜单（首页、素材分类、使用说明） */}

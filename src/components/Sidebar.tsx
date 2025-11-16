@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { House, Star, UserCircle, Rainbow, Image as ImageIcon, Tag, Smiley, Cursor, PaintBrush, BookOpen } from '@snowui-design-system/resource-react';
 import { useTheme } from '../context/ThemeContext';
@@ -31,8 +31,40 @@ import { t } from '../i18n/locales';
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const { language } = useTheme();
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
 
   const isActive = (path: string) => location.pathname === path;
+
+  // 处理滚动事件，在滚动时显示滚动条
+  useEffect(() => {
+    const sidebar = sidebarRef.current;
+    if (!sidebar) return;
+
+    const handleScroll = () => {
+      setIsScrolling(true);
+      
+      // 清除之前的定时器
+      if (scrollTimeoutRef.current !== null) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // 滚动停止后 1 秒隐藏滚动条
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
+    };
+
+    sidebar.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      sidebar.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current !== null) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // 主导航菜单项（首页）
   const primaryNav = [
@@ -59,8 +91,11 @@ const Sidebar: React.FC = () => {
   return (
     // ========== 侧边栏容器 ==========
     // 位置：页面左侧，固定宽度 256px，全高度，右侧边框分隔
-    // 布局：垂直布局，可滚动
-    <div className="w-64 h-full bg-[var(--background-1)] border-r border-[var(--black-10)] flex flex-col overflow-y-auto">
+    // 布局：垂直布局，可滚动，固定定位不随页面滚动
+    <div 
+      ref={sidebarRef}
+      className={`w-48 h-full bg-[var(--background-1)] flex flex-col overflow-y-auto sidebar-scroll ${isScrolling ? 'sidebar-scrolling' : ''}`}
+    >
       {/* ========== 导航菜单内容区 ========== */}
       {/* 位置：侧边栏顶部，占据主要空间 */}
       <div className="flex flex-col gap-4px px-12px py-16px">
@@ -87,11 +122,7 @@ const Sidebar: React.FC = () => {
         {/* ========== 素材分类区块 ========== */}
         {/* 位置：主导航下方，有分隔线 */}
         {/* 包含：分类标题 + 所有素材分类链接（图标、头像、背景等） */}
-        <div className="pt-16px mt-8px border-t border-[var(--black-10)]">
-          {/* 分类区块标题 */}
-          <span className="px-12px font-12 font-semibold text-[var(--black-40)] uppercase tracking-wider block mb-8px">
-            {t('nav.categories', language)}
-          </span>
+        <div>
           {/* 素材分类导航菜单 */}
           <nav className="flex flex-col gap-4px">
             {assetNav.map((item) => (
@@ -137,8 +168,8 @@ const Sidebar: React.FC = () => {
       {/* ========== 底部版权信息区块 ========== */}
       {/* 位置：侧边栏底部，自动推到底部（mt-auto） */}
       {/* 包含：版权信息文字 */}
-      <div className="mt-auto px-12px py-16px border-t border-[var(--black-10)]">
-        <p className="font-12 text-[var(--black-40)] text-center">{t('copyright', language)}</p>
+      <div className="mt-auto px-20px py-8px">
+        <p className="font-12 text-[var(--black-40)] text-left">{t('copyright', language)}</p>
       </div>
     </div>
   );

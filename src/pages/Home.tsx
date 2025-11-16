@@ -1,5 +1,5 @@
 import React from 'react';
-import { AvatarByewind, FourLeafClover, Gradient01, Image01, SnowIcon, WinkingFace } from '@snowui-design-system/resource-react';
+import { AvatarByewind, FourLeafClover, Gradient01, Image01, SnowLogo, WinkingFace } from '@snowui-design-system/resource-react';
 import { useTheme } from '../context/ThemeContext';
 import { t } from '../i18n/locales';
 
@@ -27,20 +27,20 @@ const Home: React.FC = () => {
   return (
     // ========== 页面容器 ==========
     // 位置：主内容区，内边距 40px
-    <div className="flex-1 p-40px">
+    <div className="flex-1 p-24px">
       {/* ========== 内容区域 ========== */}
       {/* 最大宽度 1200px，居中显示 */}
       <div className="max-w-1200px mx-auto">
         {/* ========== 页面标题区块 ========== */}
         {/* 位置：页面顶部 */}
         {/* 包含：主标题、副标题 */}
-        <div className="mb-40px">
+        <div className="mb-20px">
           {/* 主标题 */}
-          <h1 className="font-48 font-semibold text-[var(--foreground)] mb-16px">
+          <h1 className="font-24 font-semibold text-[var(--foreground)] mb-8px">
             {t('home.title', language)}
           </h1>
           {/* 副标题 */}
-          <p className="font-18 text-[var(--black-40)]">
+          <p className="font-14 text-[var(--black-40)]">
             {t('home.subtitle', language)}
           </p>
         </div>
@@ -53,8 +53,8 @@ const Home: React.FC = () => {
           {/* ========== 图标分类卡片 ========== */}
           {/* 位置：网格第一行第一列 */}
           {/* 展示：FourLeafClover 图标示例 */}
-          <div className="p-24px rounded-16px bg-[var(--background-2)] border border-[var(--black-10)]">
-            <h2 className="font-24 font-semibold text-[var(--foreground)] mb-16px">
+          <div className="p-24px rounded-16px bg-[var(--background-2)]">
+            <h2 className="font-18 font-semibold text-[var(--foreground)] mb-16px">
               {t('home.icons', language)}
             </h2>
             <div className="flex items-center justify-center p-24px bg-[var(--background-1)] rounded-12px">
@@ -65,20 +65,20 @@ const Home: React.FC = () => {
           {/* ========== 头像分类卡片 ========== */}
           {/* 位置：网格第一行第二列 */}
           {/* 展示：AvatarByewind 头像示例 */}
-          <div className="p-24px rounded-16px bg-[var(--background-2)] border border-[var(--black-10)]">
-            <h2 className="font-24 font-semibold text-[var(--foreground)] mb-16px">
+          <div className="p-24px rounded-16px bg-[var(--background-2)]">
+            <h2 className="font-18 font-semibold text-[var(--foreground)] mb-16px">
               {t('home.avatars', language)}
             </h2>
-            <div className="flex items-center justify-center p-24px bg-[var(--background-1)] rounded-12px">
-              <AvatarByewind size={64} className="rounded-full" />
+            <div className="flex w-[112px] h-[112px] items-center justify-center p-24px bg-[var(--background-1)] rounded-12px">
+              <AvatarByewind size={256} className="rounded-full" />
             </div>
           </div>
 
           {/* ========== 背景分类卡片 ========== */}
           {/* 位置：网格第一行第三列 */}
           {/* 展示：Gradient01 背景示例 */}
-          <div className="p-24px rounded-16px bg-[var(--background-2)] border border-[var(--black-10)]">
-            <h2 className="font-24 font-semibold text-[var(--foreground)] mb-16px">
+          <div className="p-24px rounded-16px bg-[var(--background-2)]">
+            <h2 className="font-18 font-semibold text-[var(--foreground)] mb-16px">
               {t('home.backgrounds', language)}
             </h2>
             <div className="flex items-center justify-center p-24px bg-[var(--background-1)] rounded-12px overflow-hidden">
@@ -89,8 +89,8 @@ const Home: React.FC = () => {
           {/* ========== 图片分类卡片 ========== */}
           {/* 位置：网格第二行第一列 */}
           {/* 展示：Image01 图片示例 */}
-          <div className="p-24px rounded-16px bg-[var(--background-2)] border border-[var(--black-10)]">
-            <h2 className="font-24 font-semibold text-[var(--foreground)] mb-16px">
+          <div className="p-24px rounded-16px bg-[var(--background-2)]">
+            <h2 className="font-18 font-semibold text-[var(--foreground)] mb-16px">
               {t('home.images', language)}
             </h2>
             <div className="flex items-center justify-center p-24px bg-[var(--background-1)] rounded-12px overflow-hidden">
@@ -100,21 +100,21 @@ const Home: React.FC = () => {
 
           {/* ========== Logo 分类卡片 ========== */}
           {/* 位置：网格第二行第二列 */}
-          {/* 展示：SnowIcon Logo 示例 */}
-          <div className="p-24px rounded-16px bg-[var(--background-2)] border border-[var(--black-10)]">
-            <h2 className="font-24 font-semibold text-[var(--foreground)] mb-16px">
+          {/* 展示：SnowLogo Logo 示例 */}
+          <div className="p-24px rounded-16px bg-[var(--background-2)]">
+            <h2 className="font-18 font-semibold text-[var(--foreground)] mb-16px">
               {t('home.logos', language)}
             </h2>
             <div className="flex items-center justify-center p-24px bg-[var(--background-1)] rounded-12px">
-              <SnowIcon size={64} />
+              <SnowLogo size={64} />
             </div>
           </div>
 
           {/* ========== 表情分类卡片 ========== */}
           {/* 位置：网格第二行第三列 */}
           {/* 展示：WinkingFace 表情示例 */}
-          <div className="p-24px rounded-16px bg-[var(--background-2)] border border-[var(--black-10)]">
-            <h2 className="font-24 font-semibold text-[var(--foreground)] mb-16px">
+          <div className="p-24px rounded-16px bg-[var(--background-2)]">
+            <h2 className="font-18 font-semibold text-[var(--foreground)] mb-16px">
               {t('home.emoji', language)}
             </h2>
             <div className="flex items-center justify-center p-24px bg-[var(--background-1)] rounded-12px">

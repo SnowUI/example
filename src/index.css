@@ -8,3 +8,43 @@
 
 /* 其他自定义样式 */
 
+/* 侧边栏自定义滚动条样式 */
+/* 默认隐藏滚动条，只在需要时显示（悬停或滚动时） */
+.sidebar-scroll {
+  /* 隐藏滚动条但保持滚动功能 */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: transparent transparent; /* Firefox: 默认透明 */
+}
+
+.sidebar-scroll:hover,
+.sidebar-scroll:focus-within,
+.sidebar-scroll.sidebar-scrolling {
+  /* 悬停、聚焦或滚动时显示滚动条 */
+  scrollbar-color: var(--black-20) transparent; /* Firefox: 显示滚动条 */
+}
+
+/* Webkit 浏览器（Chrome, Safari, Edge）滚动条样式 */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px; /* 滚动条宽度 */
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent; /* 滚动条轨道背景透明 */
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: transparent; /* 默认滚动条滑块透明 */
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.sidebar-scroll:hover::-webkit-scrollbar-thumb,
+.sidebar-scroll:focus-within::-webkit-scrollbar-thumb,
+.sidebar-scroll.sidebar-scrolling::-webkit-scrollbar-thumb {
+  background: var(--black-20); /* 悬停、聚焦或滚动时显示滚动条滑块 */
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--black-40); /* 悬停滚动条滑块时更明显 */
+}
+

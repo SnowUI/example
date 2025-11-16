@@ -158,11 +158,11 @@ const Categories: React.FC = () => {
         {/* 包含：分类标题、信息说明文字 */}
         <div className="mb-24px">
           {/* 分类标题（根据当前分类动态显示，如"图标"、"头像"等） */}
-          <h1 className="font-32 font-semibold text-[var(--foreground)] mb-8px">
+          <h1 className="font-18 font-semibold text-[var(--foreground)] mb-8px">
             {t(`categories.${categoryKey}`, language)}
           </h1>
           {/* 信息说明文字（显示素材数量和尺寸说明） */}
-          <p className="font-14 text-[var(--black-60)]">{infoText}</p>
+          <p className="font-12 text-[var(--black-40)]">{infoText}</p>
         </div>
 
         {/* ========== 素材网格展示区块 ========== */}
@@ -185,7 +185,7 @@ const Categories: React.FC = () => {
               </div>
               {/* 素材名称文字 */}
               {/* 悬停时文字颜色变化 */}
-              <span className="font-12 text-[var(--black-60)] text-center break-all group-hover:text-[var(--foreground)] transition-colors">
+              <span className="font-12 text-[var(--black-40)] text-center break-all group-hover:text-[var(--foreground)] transition-colors">
                 {String(item.name)}
               </span>
             </div>
