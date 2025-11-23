@@ -41,12 +41,14 @@ pnpm install
 #### Development
 
 ```bash
-npm start
+npm run dev
+# or
+pnpm dev
 # or
 pnpm start
 ```
 
-The app will open at [http://localhost:3000](http://localhost:3000)
+The app will open at [http://localhost:3001](http://localhost:3001)
 
 #### Build
 
@@ -83,6 +85,7 @@ Visit the live demo: **[https://snowui.github.io/example](https://snowui.github.
 
 - React 19
 - TypeScript
+- Vite 6
 - React Router
 - Tailwind CSS v4
 - SnowUI Design System
@@ -124,12 +127,14 @@ pnpm install
 #### 开发
 
 ```bash
-npm start
+npm run dev
+# 或
+pnpm dev
 # 或
 pnpm start
 ```
 
-应用将在 [http://localhost:3000](http://localhost:3000) 打开
+应用将在 [http://localhost:3001](http://localhost:3001) 打开
 
 #### 构建
 
@@ -166,6 +171,7 @@ pnpm build
 
 - React 19
 - TypeScript
+- Vite 6
 - React Router
 - Tailwind CSS v4
 - SnowUI Design System

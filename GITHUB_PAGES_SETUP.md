@@ -5,10 +5,14 @@
 ### 1. 构建项目
 
 ```bash
+pnpm build
+# 或
 npm run build
 ```
 
 这会生成 `docs` 文件夹，包含所有构建后的文件。
+
+> **注意**：项目使用 Vite 构建，配置在 `vite.config.ts` 中。`base` 和 `outDir` 已配置为支持 GitHub Pages。
 
 ### 2. 提交并推送
 
@@ -36,28 +40,31 @@ git push
 
 ### 仓库名称配置
 
-如果你的 GitHub 仓库名**不是** `username.github.io`，需要修改 `package.json` 中的 `homepage` 字段：
+项目使用 Vite，配置在 `vite.config.ts` 中。如果仓库名不是 `example`，需要修改：
 
-```json
-{
-  "homepage": "/your-repo-name"
-}
+```typescript
+// vite.config.ts
+export default defineConfig({
+  base: '/your-repo-name/', // 修改为你的仓库名
+  build: {
+    outDir: 'docs',
+  },
+})
 ```
 
 例如，如果仓库名是 `snowui`：
-```json
-{
-  "homepage": "/snowui"
-}
+```typescript
+base: '/snowui/',
 ```
 
 ### React Router 配置
 
-代码已经自动检测 basename，但如果遇到路由问题，可以手动设置：
+代码已经自动从 `import.meta.BASE_URL` 读取 basename，无需手动配置。如果需要手动设置：
 
-在 `src/App.tsx` 中修改：
+在 `src/App.tsx` 中：
 ```tsx
-<Router basename="/your-repo-name">
+const basename = import.meta.BASE_URL?.replace(/\/$/, '') || '/example';
+<Router basename={basename}>
 ```
 
 ## 故障排除
@@ -65,20 +72,21 @@ git push
 ### 问题：页面显示空白
 
 1. 检查浏览器控制台的错误
-2. 确认 `homepage` 字段设置正确
+2. 确认 `vite.config.ts` 中的 `base` 配置正确
 3. 确认 `docs` 文件夹已提交到 GitHub
 
 ### 问题：路由不工作
 
-1. 确认 `basename` 设置正确
-2. 检查 GitHub Pages 是否配置为使用 `/docs` 文件夹
-3. 确认 `.nojekyll` 文件已提交
+1. 确认 `vite.config.ts` 中的 `base` 配置正确
+2. 确认 `src/App.tsx` 中的 `basename` 从 `import.meta.BASE_URL` 读取
+3. 检查 GitHub Pages 是否配置为使用 `/docs` 文件夹
+4. 确认 `docs/404.html` 文件存在（用于客户端路由）
 
 ### 问题：资源文件 404
 
-1. 检查 `package.json` 中的 `homepage` 字段
-2. 确认所有资源路径使用相对路径
-3. 重新构建项目：`npm run build`
+1. 检查 `vite.config.ts` 中的 `base` 配置
+2. 确认所有资源路径使用相对路径（Vite 会自动处理）
+3. 重新构建项目：`pnpm build`
 
 ## 自动化部署（可选）
 
@@ -100,8 +108,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: npm install
-      - run: npm run build
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - run: pnpm install
+      - run: pnpm build
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
